@@ -1,0 +1,48 @@
+name: example-yarn-modern
+
+on: workflow_dispatch
+
+jobs:
+
+  module-api-yarn-modern-node-modules:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: examples/yarn-modern-node-modules
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: yarn
+      - run: node e2e-run-tests.js
+      - run: yarn node e2e-run-tests.js
+
+  module-api-yarn-modern-pnp:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: examples/yarn-modern-pnp
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: yarn
+#       node fails with Cannot find module 'cypress'
+#      - run: node e2e-run-tests.js
+      - run: yarn node e2e-run-tests.js
+
+  module-api-yarn-modern-pnpm:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: examples/yarn-modern-pnpm
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: yarn
+      - run: node e2e-run-tests.js
+      - run: yarn node e2e-run-tests.js

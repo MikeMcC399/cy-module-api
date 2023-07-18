@@ -1,0 +1,19 @@
+name: example-yarn-classic
+
+on: workflow_dispatch
+
+jobs:
+
+  module-api-yarn-classic:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: examples/yarn-classic
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: yarn
+      - run: node e2e-run-tests.js
+      - run: yarn node e2e-run-tests.js

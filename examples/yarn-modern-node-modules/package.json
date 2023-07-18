@@ -9,7 +9,7 @@
   "author": "Mike McCready",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "12.17.1"
+    "cypress": "12.16.0"
   },
   "packageManager": "yarn@3.6.1"
 }
